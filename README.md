@@ -11,7 +11,7 @@ Mon super Websocket est une api géniale qui vous permet de dire **bonjour** au 
 
 ## Initialisation du client
 
-    let socket = new ClientWebService('http://localhost:8080', 'Lionel')
+    let socket = new ClientWebService('http://localhost:8080', <name>')
 
 
 ## Fonctionnalités
@@ -33,4 +33,26 @@ Mon super Websocket est une api géniale qui vous permet de dire **bonjour** au 
 
 
 > (Client) bonjour
-> > (Serveur) bonjour à toi aussi !
+> > (Serveur) bonjour à toi aussi ! 
+
+
+<br/>
+
+
+
+`yo()` : Permet d'envoyer **YO** à tous les clients connectés au serveur.<br/>
+`onYo()` : Permet de récupérer la valeur de retour de la méthode `yo()`.
+
+* Valeur de retour de type *String*
+
+### Examples
+
+        $('#yo').click(() => {
+            socket.yo()
+        })
+
+        socket.onYo((returnYo) => {
+            console.log(returnYo)
+        })
+
+> Tous les clients connectés reçoivent **YO**
