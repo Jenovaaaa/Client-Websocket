@@ -6,7 +6,10 @@
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+    <script src="./ClientWebService.js"></script>
+
     <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
     </script>
 
 
@@ -17,14 +20,31 @@
     <input type="button" value="Bonjour" id="bonjour" />
     <input type="button" value="YO" id="yo" />
 
+    <script>
+        let socket = new ClientWebService('http://localhost:8080', 'Lionel')
+
+        $('#bonjour').click(() => {
+            socket.sendBonjour()
+        })
+
+        $('#yo').click(() => {
+            socket.yo()
+        })
 
 
+        socket.onConnect((returnConnect) => {
+            console.log(returnConnect)
+        })
 
-
-
-
-    <script src="./clientHTML.js"></script>
+        socket.onBonjour((returnBonjour) => {
+            console.log(returnBonjour)
+        })
+        
+        socket.onYo((returnYo) => {
+            console.log(returnYo)
+        })
+    </script>
 
 </body>
 
-</html> 
+</html>
